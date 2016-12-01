@@ -10,6 +10,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+/**
+ *  Implements Selenium Tests for Amazon Website
+ */
 public class AmazonTest {
 		private WebDriver driver; 
 		String browser = "IE";
