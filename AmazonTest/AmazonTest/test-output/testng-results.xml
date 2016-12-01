@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="1" failed="0" total="1" passed="0">
+<testng-results skipped="0" failed="2" total="2" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="142" started-at="2016-12-01T04:35:54Z" finished-at="2016-12-01T04:35:54Z">
+  <suite name="Default suite" duration-ms="8758" started-at="2016-12-01T17:28:36Z" finished-at="2016-12-01T17:28:45Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="142" started-at="2016-12-01T04:35:54Z" finished-at="2016-12-01T04:35:54Z">
+    <test name="Default test" duration-ms="8758" started-at="2016-12-01T17:28:36Z" finished-at="2016-12-01T17:28:45Z">
       <class name="AmazonTest.AmazonTest.AmazonTest">
-        <test-method status="FAIL" signature="instantiateWebDriver()[pri:0, instance:AmazonTest.AmazonTest.AmazonTest@2f7298b]" name="instantiateWebDriver" is-config="true" duration-ms="0" started-at="2016-11-30T23:35:54Z" finished-at="2016-11-30T23:35:54Z">
+        <test-method status="PASS" signature="instantiateWebDriver()[pri:0, instance:AmazonTest.AmazonTest.AmazonTest@402a079c]" name="instantiateWebDriver" is-config="true" duration-ms="8647" started-at="2016-12-01T12:28:36Z" finished-at="2016-12-01T12:28:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- instantiateWebDriver -->
+        <test-method status="FAIL" signature="callMethod()[pri:0, instance:AmazonTest.AmazonTest.AmazonTest@402a079c]" name="callMethod" duration-ms="14" started-at="2016-12-01T12:28:45Z" finished-at="2016-12-01T12:28:45Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-	at AmazonTest.AmazonTest.AmazonTest.instantiateWebDriver(AmazonTest.java:20)
+	at AmazonTest.AmazonTest.AmazonTest.myAmazonTest(AmazonTest.java:72)
+	at AmazonTest.AmazonTest.AmazonTest.callMethod(AmazonTest.java:65)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:515)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:216)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:143)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:631)
-	at org.testng.TestRunner.run(TestRunner.java:599)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1137)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:753)
+	at org.testng.TestRunner.run(TestRunner.java:607)
 	at org.testng.SuiteRunner.runTest(SuiteRunner.java:368)
 	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:363)
 	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:321)
@@ -40,15 +47,71 @@
           </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- instantiateWebDriver -->
-        <test-method status="SKIP" signature="myAmazonTest()[pri:0, instance:AmazonTest.AmazonTest.AmazonTest@2f7298b]" name="myAmazonTest" duration-ms="2" started-at="2016-11-30T23:35:54Z" finished-at="2016-11-30T23:35:54Z">
+        </test-method> <!-- callMethod -->
+        <test-method status="FAIL" signature="myAmazonTest()[pri:0, instance:AmazonTest.AmazonTest.AmazonTest@402a079c]" name="myAmazonTest" duration-ms="46" started-at="2016-12-01T12:28:45Z" finished-at="2016-12-01T12:28:45Z">
+          <exception class="org.openqa.selenium.NoSuchWindowException">
+            <message>
+              <![CDATA[Unable to find element on closed window (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 40 milliseconds
+Build info: version: '3.0.1', revision: '1969d75', time: '2016-10-18 09:49:13 -0700'
+System info: host: 'LAPTOP-NCO28UG3', ip: '192.168.1.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, pageLoadStrategy=normal, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:15070/, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: efb02991-6acd-4cbf-975e-1ad7210524fb
+*** Element info: {Using=id, value=searchDropdownBox}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchWindowException: Unable to find element on closed window (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 40 milliseconds
+Build info: version: '3.0.1', revision: '1969d75', time: '2016-10-18 09:49:13 -0700'
+System info: host: 'LAPTOP-NCO28UG3', ip: '192.168.1.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, pageLoadStrategy=normal, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:15070/, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: efb02991-6acd-4cbf-975e-1ad7210524fb
+*** Element info: {Using=id, value=searchDropdownBox}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:216)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:168)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:635)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
+	at org.openqa.selenium.By$ById.findElement(By.java:218)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:360)
+	at AmazonTest.AmazonTest.AmazonTest.myAmazonTest(AmazonTest.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1137)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:753)
+	at org.testng.TestRunner.run(TestRunner.java:607)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:368)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:363)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:321)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:270)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1284)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1209)
+	at org.testng.TestNG.runSuites(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1096)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- myAmazonTest -->
-        <test-method status="SKIP" signature="closeBrowser()[pri:0, instance:AmazonTest.AmazonTest.AmazonTest@2f7298b]" name="closeBrowser" is-config="true" duration-ms="0" started-at="2016-11-30T23:35:54Z" finished-at="2016-11-30T23:35:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser -->
       </class> <!-- AmazonTest.AmazonTest.AmazonTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

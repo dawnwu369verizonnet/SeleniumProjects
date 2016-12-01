@@ -5,6 +5,7 @@
     <classes>
       <class name="AmazonTest.AmazonTest.AmazonTest">
         <methods>
+          <include name="callMethod"/>
           <include name="myAmazonTest"/>
           <include name="instantiateWebDriver"/>
         </methods>
