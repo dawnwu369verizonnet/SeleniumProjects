@@ -11,7 +11,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 /**
- *  Implements Selenium Tests for Amazon Website
+ *  Implement Selenium Tests for Amazon Website
+ *  Date: November 2016
  */
 public class AmazonTest {
 		private WebDriver driver; 
