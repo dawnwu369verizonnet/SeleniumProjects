@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Default suite" verbose="2" parallel="tests" thread-count="2">
+<parameter name="URL" value="http://demo.nopcommerce.com/"></parameter>
+  <test  name="Test-1">
+  <parameter name="Browser" value="FireFox"></parameter>
+    <classes>
+      <class name="org.eCom.libs.DriverScript"/>
+    </classes>
+  </test> <!-- Default test -->
+<!--   <test  name="Test-2"> -->
+<!--   <parameter name="Browser" value="FireFox"></parameter> -->
+<!--     <classes> -->
+<!--       <class name="org.eCom.libs.DriverScript"/> -->
+<!--     </classes> -->
+<!--   </test> Default test -->
+</suite> <!-- Default suite -->

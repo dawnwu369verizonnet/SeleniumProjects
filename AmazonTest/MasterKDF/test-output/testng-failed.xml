@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" verbose="2" name="Failed suite [Default suite]" parallel="tests">
+  <parameter name="URL" value="http://demo.nopcommerce.com/"/>
+  <parameter name="Browser" value="FireFox"/>
+  <test name="Test-1(failed)" parallel="tests">
+    <parameter name="Browser" value="FireFox"/>
+    <classes>
+      <class name="org.eCom.libs.DriverScript">
+        <methods>
+          <include name="mainMethod"/>
+          <include name="instantiateWebDriver"/>
+          <include name="closeBrowsers"/>
+        </methods>
+      </class> <!-- org.eCom.libs.DriverScript -->
+    </classes>
+  </test> <!-- Test-1(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
