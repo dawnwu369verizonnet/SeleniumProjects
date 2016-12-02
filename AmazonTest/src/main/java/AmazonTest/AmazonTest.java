@@ -22,7 +22,6 @@ import org.testng.annotations.Test;
  */
 public class AmazonTest {
 		private WebDriver driver; 
-		String browser = "IE";
 		String delimiter = " ";
 
 		@BeforeTest
@@ -32,7 +31,6 @@ public class AmazonTest {
 //			dc.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,  true);
 //			System.setProperty("webdriver.ie.driver", "D:\\Selenium\\Software\\IEDriverServer_Win32_2.53.1\\IEDriverServer.exe");
 //			driver = new InternetExplorerDriver(dc);
-//			
 			driver = getDriver("Chrome");
 			driver.get("https://www.amazon.com/");		
 			Thread.sleep(5000);
@@ -89,9 +87,7 @@ public class AmazonTest {
 			System.out.println("the total no. of current page is " + result2PageArr[1]);
 			
 			//filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
-			filter("32 Inches & Under", "2016");
-		
-			
+			filter("32 Inches & Under", "2016");	
 		}
 
 			//Requirement 5: Parameterize 2 of the filtering parameters of TV displaySize and TV modelYear and display the filter.. 
