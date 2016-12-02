@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.annotations.*;
 
 /**
  *  Implement Selenium Tests for Amazon Website
@@ -49,7 +48,7 @@ public class AmazonTest {
 			return d;	
 		}
 		
-		@AfterTest(enabled=false)
+		@AfterTest
 		public void closeBrowser(){
 			driver.quit();
 		}
