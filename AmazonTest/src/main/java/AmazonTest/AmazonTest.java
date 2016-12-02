@@ -1,5 +1,7 @@
 package AmazonTest;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,15 +55,6 @@ public class AmazonTest {
 			driver.quit();
 		}
 		
-//		@Test
-//		public void callMethod() throws InterruptedException{
-//			//String displaySize, String modelYear
-//			AmazonTest amzSearch = new AmazonTest();
-//			amzSearch.myAmazonTest();
-//			 //mySearch();
-//			amzSearch.filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
-//		}
-		
 		@Test(priority = 0)
 		public void myAmazonTest() throws InterruptedException{
 			driver.findElement(By.id("searchDropdownBox")).click();
@@ -95,17 +88,21 @@ public class AmazonTest {
 			String result2PageArr[] = result2Arr[0].split("-");
 			System.out.println("the total no. of current page is " + result2PageArr[1]);
 			
-			filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
+			//filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
+			filter("32 Inches & Under", "2016");
+		
 			
-			//filter("32 Inches & Under", "2016");	
 		}
 
 			//Requirement 5: Parameterize 2 of the filtering parameters of TV displaySize and TV modelYear and display the filter.. 
 			public void filter(String displaySize, String modelYear) throws InterruptedException{
-				driver.findElement(By.xpath(displaySize)).click();//choose TV displaySize
+				////div[contains(text(),'noreply@somedomain.com')]
+				String xpathDisplaySize = "//span[contains(text(), '" + displaySize + "')]";
+				String xpathModelYear = "//span[@class='refinementLink' and contains(text(), '" + modelYear + "')]";
+				driver.findElement(By.xpath(xpathDisplaySize)).click();//choose TV displaySize
 				//".//*[@id='ref_1232878011']/li[1]/a/span[1]"
 				Thread.sleep(5000);
-				driver.findElement(By.xpath(modelYear)).click();//choose TV modelYear
+				driver.findElement(By.xpath(xpathModelYear)).click();//choose TV modelYear
 				//".//*[@id='ref_4972967011']/li[1]/a/span"
 				Thread.sleep(1000);
 				
@@ -139,26 +136,22 @@ public class AmazonTest {
 				
 				//Requirement 9: Following steps to log critical information of the selected product details, 
 				//for the reporting purpose like price, product details, Technical details etc. 
-				System.out.println("The price of this product is" +
-						(driver.findElement(By.id("priceblock_ourprice"))).getText());//get the price of the product.
+				
+				try {
+					System.out.println("The price of this product is " +
+							(driver.findElement(By.id("priceblock_ourprice"))).getText());//get the price of the product.
+				} catch (Exception e) {
+					System.out.println("No price is available for this product");
+				}
 				System.out.println("The product details is" +
 						(driver.findElement(By.id("feature-bullets"))).getText());//get product details of the product. 
-				
+				List<WebElement> comments = driver.findElements(By.xpath("//div[@id='revMHRL']/div/div/div[@class='a-section']"));
 				//Requirement 10: Following steps to report the first 6 customer reviews. 
 				System.out.println("The first customer review is " 
-						+ driver.findElement(By.xpath(".//*[@id='revData-dpReviewsMostHelpfulAUI-R26VU81410QCH7']/div")).getText());
+						+ comments.get(0).getText());
 				System.out.println("The second customer review is " 
-						+ driver.findElement(By.xpath(".//*[@id='revData-dpReviewsMostHelpfulAUI-R1I2XF8U4XFQJK']/div")).getText());
+						+ comments.get(1).getText());
 				System.out.println("The third customer review is " 
-						+ driver.findElement(By.xpath(".//*[@id='revData-dpReviewsMostHelpfulAUI-R1K4KVA1PBR86I']/div")).getText());
-				
-				//System.out.println("The fourth customer review is " 
-						//+ driver.findElement(By.xpath(".//*[@id='revData-dpReviewsMostHelpfulAUI-R26VU81410QCH7']/div")).getText());
-				System.out.println("The fifth customer review is " 
-						+ driver.findElement(By.xpath(".//*[@id='revData-dpReviewsMostHelpfulAUI-R26VU81410QCH7']/div")).getText());
-				System.out.println("The sixth customer review is " 
-						+ driver.findElement(By.xpath(".//*[@id='revData-dpReviewsMostHelpfulAUI-R26VU81410QCH7']/div")).getText());
-			
-			
+						+ comments.get(2).getText());
 		}	
 }
