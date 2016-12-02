@@ -1,4 +1,4 @@
-package AmazonTest.AmazonTest;
+package AmazonTest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,12 +31,11 @@ public class AmazonTest {
 //			System.setProperty("webdriver.ie.driver", "D:\\Selenium\\Software\\IEDriverServer_Win32_2.53.1\\IEDriverServer.exe");
 //			driver = new InternetExplorerDriver(dc);
 //			
-			driver = getDriver("IE");
+			driver = getDriver("Chrome");
 			driver.get("https://www.amazon.com/");		
 			Thread.sleep(5000);
 		}
 				
-		//@BeforeTest
 		private WebDriver getDriver(String browserType){
 			WebDriver d = null;
 			if(browserType.equalsIgnoreCase(ConstantsFile.IE_BROWSER)){
@@ -49,23 +48,19 @@ public class AmazonTest {
 			return d;	
 		}
 		
-//		driver = getDriver("IE");
-//		driver.get("https://www.amazon.com/");		
-//		Thread.sleep(500);
-		
-//		@AfterTest
-//		public void closeBrowser(){
-//			driver.quit();
-//		}
-		
-		@Test
-		public void callMethod() throws InterruptedException{
-			//String displaySize, String modelYear
-			AmazonTest amzSearch = new AmazonTest();
-			amzSearch.myAmazonTest();
-			 //mySearch();
-			amzSearch.filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
+		@AfterTest
+		public void closeBrowser(){
+			driver.quit();
 		}
+		
+//		@Test
+//		public void callMethod() throws InterruptedException{
+//			//String displaySize, String modelYear
+//			AmazonTest amzSearch = new AmazonTest();
+//			amzSearch.myAmazonTest();
+//			 //mySearch();
+//			amzSearch.filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
+//		}
 		
 		@Test(priority = 0)
 		public void myAmazonTest() throws InterruptedException{
@@ -99,8 +94,12 @@ public class AmazonTest {
 			System.out.println("Requirement 4: the total no. of search results by searching the keyword of 'Samsung TV' is " + result2Arr[2]);
 			String result2PageArr[] = result2Arr[0].split("-");
 			System.out.println("the total no. of current page is " + result2PageArr[1]);
-		}
 			
+			filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
+			
+			//filter("32 Inches & Under", "2016");	
+		}
+
 			//Requirement 5: Parameterize 2 of the filtering parameters of TV displaySize and TV modelYear and display the filter.. 
 			public void filter(String displaySize, String modelYear) throws InterruptedException{
 				driver.findElement(By.xpath(displaySize)).click();//choose TV displaySize

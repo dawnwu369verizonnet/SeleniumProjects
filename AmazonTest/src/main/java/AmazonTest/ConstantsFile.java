@@ -1,4 +1,4 @@
-package AmazonTest.AmazonTest;
+package AmazonTest;
 
 public class ConstantsFile {
 

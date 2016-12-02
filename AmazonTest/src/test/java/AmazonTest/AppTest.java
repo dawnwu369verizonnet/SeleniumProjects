@@ -1,4 +1,4 @@
-package AmazonTest.AmazonTest;
+package AmazonTest;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
