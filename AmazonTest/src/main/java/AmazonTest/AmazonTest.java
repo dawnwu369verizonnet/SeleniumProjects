@@ -18,7 +18,6 @@ import org.testng.annotations.Test;
 /**
  *  Implement Selenium Tests for Amazon Website
  *  Date: November 2016
- *  
  */
 public class AmazonTest {
 		private WebDriver driver; 
@@ -88,6 +87,8 @@ public class AmazonTest {
 			
 			//filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
 			filter("32 Inches & Under", "2016");	
+			
+			
 		}
 
 			//Requirement 5: Parameterize 2 of the filtering parameters of TV displaySize and TV modelYear and display the filter.. 
@@ -121,7 +122,7 @@ public class AmazonTest {
 //					stars.click();
 					String result4 = driver.findElement(By.xpath(".//*[@id='a-popover-content-1']/div/div/div/div[1]/span")).getText();
 					//this is the rating: 
-					System.out.println("The star rating for this product is" + result4);
+					System.out.println("The star rating for this product is " + result4);
 				}catch(Exception e){
 					System.out.println("Exception handled, capturing the msg of 'Star rating is failed. " + e.getMessage());
 				}
