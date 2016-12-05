@@ -168,5 +168,4 @@ public class AmazonTest {
 				test.log(LogStatus.INFO,"The third customer review is " 
 						+ comments.get(2).getText());
 		}	
-	
 }
