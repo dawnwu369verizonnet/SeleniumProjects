@@ -2,6 +2,7 @@ package AmazonTest;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,12 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.DisplayOrder;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import com.relevantcodes.extentreports.NetworkMode;
+
 /**
  *  Implement Selenium Tests for Amazon Website
  *  Date: November 2016
@@ -22,9 +29,13 @@ import org.testng.annotations.Test;
 public class AmazonTest {
 		private WebDriver driver; 
 		String delimiter = " ";
-
+		ExtentReports logger;
+		ExtentTest test;
+		
 		@BeforeTest
 		public void instantiateWebDriver() throws InterruptedException{
+			logger = new ExtentReports("C:\\Users\\dawnw\\workspace\\AmazonTest\\advanceReport.html", true, DisplayOrder.OLDEST_FIRST, NetworkMode.ONLINE);
+			test = logger.startTest("Testing website: Http://www.amazon.com");
 //			DesiredCapabilities dc = DesiredCapabilities.internetExplorer();
 //			dc.setCapability(CapabilityType.BROWSER_NAME,  "IE");
 //			dc.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,  true);
@@ -47,12 +58,15 @@ public class AmazonTest {
 			return d;	
 		}
 		
+		
 		@AfterTest
 		public void closeBrowser(){
 			driver.quit();
+			logger.endTest(test);
+			logger.flush();	
 		}
 		
-		@Test(priority = 0)
+		@Test
 		public void myAmazonTest() throws InterruptedException{
 			driver.findElement(By.id("searchDropdownBox")).click();
 			Thread.sleep(800);
@@ -60,7 +74,8 @@ public class AmazonTest {
 			Select objSelect = new Select(driver.findElement(By.id("searchDropdownBox")));
 			objSelect.selectByVisibleText("Electronics");
 			
-			System.out.println("Electronics is selected. " );
+			test.log(LogStatus.INFO,"Electronics is selected. " );
+			
 			
 			//Requirement 2: the following steps to enter the keyword of Samsung in search box and click Search button. 
 			driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Samsung");
@@ -68,7 +83,7 @@ public class AmazonTest {
 			driver.findElement(By.xpath(".//*[@id='nav-search']/form/div[2]/div/input")).click();
 			String result1 = new String(driver.findElement(By.id("s-result-count")).getText());
 			String result1Arr[] = result1.split(delimiter);
-			System.out.println("Requirement 3: the total number of results by searching the keyword of Samsung is " + result1Arr[2]);
+			test.log(LogStatus.INFO,"Requirement 3: the total number of results by searching the keyword of Samsung is " + result1Arr[2]);
 
 			//Requirement 4-1: The following steps to clear the search field and append TV to Samsung and click the search button.
 			driver.findElement(By.id("twotabsearchtextbox")).clear();
@@ -81,14 +96,13 @@ public class AmazonTest {
 			String result2 = driver.findElement(By.id("s-result-count")).getText();
 			Thread.sleep(500);
 			String result2Arr[] = result2.split(delimiter);
-			System.out.println("Requirement 4: the total no. of search results by searching the keyword of 'Samsung TV' is " + result2Arr[2]);
+			test.log(LogStatus.INFO,"Requirement 4: the total no. of search results by searching the keyword of 'Samsung TV' is " + result2Arr[2]);
 			String result2PageArr[] = result2Arr[0].split("-");
-			System.out.println("the total no. of current page is " + result2PageArr[1]);
+			test.log(LogStatus.INFO,"the total no. of current page is " + result2PageArr[1]);
 			
 			//filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
-			filter("32 Inches & Under", "2016");	
-			
-			
+			filter("32 Inches & Under", "2016");
+			test.log(LogStatus.PASS, "Testing is completed");
 		}
 
 			//Requirement 5: Parameterize 2 of the filtering parameters of TV displaySize and TV modelYear and display the filter.. 
@@ -106,10 +120,10 @@ public class AmazonTest {
 				//Requirement 6-1: Following steps to report total no. of search results 
 				String result3 = driver.findElement(By.id("s-result-count")).getText();
 
-				System.out.println("After filtering by displaySize and modelYear is result3: " + result3);
+				test.log(LogStatus.INFO,"After filtering by displaySize and modelYear is result3: " + result3);
 				String result3Arr[] = result3.split(delimiter);
 
-				System.out.println("The total no. after filtering by displaySize and modelYear is result3Arr[0] is: " + result3Arr[0]);
+				test.log(LogStatus.INFO,"The total no. after filtering by displaySize and modelYear is result3Arr[0] is: " + result3Arr[0]);
 				//Requirement 7: Following steps to report the star rating of each of the result in the first result page. 
 				try{
 					Thread.sleep(500);
@@ -118,13 +132,16 @@ public class AmazonTest {
 					
 					Actions action = new Actions(driver);
 					action.moveToElement(stars).build().perform();
-					Thread.sleep(1000);
-//					stars.click();
-					String result4 = driver.findElement(By.xpath(".//*[@id='a-popover-content-1']/div/div/div/div[1]/span")).getText();
+					Thread.sleep(2000);
+					
+					//WebElement one = driver.findElement(By.xpath(".//div[@class='a-popover-content']"));
+					
+					String result4 = driver.findElement(By.xpath(".//div[@class='a-popover-content']/div/div/div/div/span")).getText();
+					// ".//div[@class='a-popover-content']/div/div/div/div[@class='a-section']/span
 					//this is the rating: 
-					System.out.println("The star rating for this product is " + result4);
+					test.log(LogStatus.INFO,"The star rating for this product is " + result4);
 				}catch(Exception e){
-					System.out.println("Exception handled, capturing the msg of 'Star rating is failed. " + e.getMessage());
+					test.log(LogStatus.FAIL, "Exception handled, capturing the msg of the Star rating is failed. " + e.getMessage());
 				}
 				
 				//Requirement 8: Following step to click and expand the first result from the search results. 
@@ -135,20 +152,21 @@ public class AmazonTest {
 				//for the reporting purpose like price, product details, Technical details etc. 
 				
 				try {
-					System.out.println("The price of this product is " +
+					test.log(LogStatus.INFO,"The price of this product is " +
 							(driver.findElement(By.id("priceblock_ourprice"))).getText());//get the price of the product.
 				} catch (Exception e) {
-					System.out.println("No price is available for this product");
+					test.log(LogStatus.INFO, "No price is available for this product");
 				}
-				System.out.println("The product details is" +
+				test.log(LogStatus.INFO,"The product details is" +
 						(driver.findElement(By.id("feature-bullets"))).getText());//get product details of the product. 
 				List<WebElement> comments = driver.findElements(By.xpath("//div[@id='revMHRL']/div/div/div[@class='a-section']"));
 				//Requirement 10: Following steps to report the first 6 customer reviews. 
-				System.out.println("The first customer review is " 
+				test.log(LogStatus.INFO,"The first customer review is " 
 						+ comments.get(0).getText());
-				System.out.println("The second customer review is " 
+				test.log(LogStatus.INFO,"The second customer review is " 
 						+ comments.get(1).getText());
-				System.out.println("The third customer review is " 
+				test.log(LogStatus.INFO,"The third customer review is " 
 						+ comments.get(2).getText());
 		}	
+	
 }

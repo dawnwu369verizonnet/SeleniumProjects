@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="41098" started-at="2016-12-02T20:05:46Z" finished-at="2016-12-02T20:06:27Z">
+  <suite name="Default suite" duration-ms="40393" started-at="2016-12-05T16:42:49Z" finished-at="2016-12-05T16:43:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="41098" started-at="2016-12-02T20:05:46Z" finished-at="2016-12-02T20:06:27Z">
+    <test name="Default test" duration-ms="40393" started-at="2016-12-05T16:42:49Z" finished-at="2016-12-05T16:43:30Z">
       <class name="AmazonTest.AmazonTest">
-        <test-method status="PASS" signature="instantiateWebDriver()[pri:0, instance:AmazonTest.AmazonTest@59ec2012]" name="instantiateWebDriver" is-config="true" duration-ms="12670" started-at="2016-12-02T15:05:46Z" finished-at="2016-12-02T15:05:59Z">
+        <test-method status="PASS" signature="instantiateWebDriver()[pri:0, instance:AmazonTest.AmazonTest@3fee9989]" name="instantiateWebDriver" is-config="true" duration-ms="13578" started-at="2016-12-05T11:42:49Z" finished-at="2016-12-05T11:43:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- instantiateWebDriver -->
-        <test-method status="PASS" signature="myAmazonTest()[pri:0, instance:AmazonTest.AmazonTest@59ec2012]" name="myAmazonTest" duration-ms="26589" started-at="2016-12-02T15:05:59Z" finished-at="2016-12-02T15:06:25Z">
+        <test-method status="PASS" signature="myAmazonTest()[pri:0, instance:AmazonTest.AmazonTest@3fee9989]" name="myAmazonTest" duration-ms="24572" started-at="2016-12-05T11:43:03Z" finished-at="2016-12-05T11:43:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- myAmazonTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:AmazonTest.AmazonTest@59ec2012]" name="closeBrowser" is-config="true" duration-ms="1808" started-at="2016-12-02T15:06:25Z" finished-at="2016-12-02T15:06:27Z">
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:AmazonTest.AmazonTest@3fee9989]" name="closeBrowser" is-config="true" duration-ms="2220" started-at="2016-12-05T11:43:27Z" finished-at="2016-12-05T11:43:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
