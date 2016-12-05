@@ -41,7 +41,7 @@ public class AmazonTest {
 //			dc.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,  true);
 //			System.setProperty("webdriver.ie.driver", "D:\\Selenium\\Software\\IEDriverServer_Win32_2.53.1\\IEDriverServer.exe");
 //			driver = new InternetExplorerDriver(dc);
-			driver = getDriver("Chrome");
+			driver = getDriver("IE");
 			driver.get("https://www.amazon.com/");		
 			Thread.sleep(5000);
 		}
@@ -69,7 +69,8 @@ public class AmazonTest {
 		@Test
 		public void myAmazonTest() throws InterruptedException{
 			driver.findElement(By.id("searchDropdownBox")).click();
-			Thread.sleep(800);
+			//driver.findElement(By.xpath(".//div/div/div/div[@class='nav-search-facade']/option")).click();
+			Thread.sleep(5000);
 			
 			Select objSelect = new Select(driver.findElement(By.id("searchDropdownBox")));
 			objSelect.selectByVisibleText("Electronics");
@@ -104,7 +105,6 @@ public class AmazonTest {
 			filter("32 Inches & Under", "2016");
 			test.log(LogStatus.PASS, "Testing is completed");
 		}
-
 			//Requirement 5: Parameterize 2 of the filtering parameters of TV displaySize and TV modelYear and display the filter.. 
 			public void filter(String displaySize, String modelYear) throws InterruptedException{
 				////div[contains(text(),'noreply@somedomain.com')]
@@ -149,8 +149,7 @@ public class AmazonTest {
 				Thread.sleep(500);
 				
 				//Requirement 9: Following steps to log critical information of the selected product details, 
-				//for the reporting purpose like price, product details, Technical details etc. 
-				
+				//for the reporting purpose like price, product details, Technical details etc. 			
 				try {
 					test.log(LogStatus.INFO,"The price of this product is " +
 							(driver.findElement(By.id("priceblock_ourprice"))).getText());//get the price of the product.
