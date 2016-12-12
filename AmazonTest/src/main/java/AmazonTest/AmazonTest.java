@@ -1,12 +1,21 @@
 package AmazonTest;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Ignore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
@@ -41,9 +50,10 @@ public class AmazonTest {
 //			dc.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,  true);
 //			System.setProperty("webdriver.ie.driver", "D:\\Selenium\\Software\\IEDriverServer_Win32_2.53.1\\IEDriverServer.exe");
 //			driver = new InternetExplorerDriver(dc);
-			driver = getDriver("IE");
+			driver = getDriver("Chrome");
 			driver.get("https://www.amazon.com/");		
-			Thread.sleep(5000);
+			//Thread.sleep(5000);
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		}
 				
 		private WebDriver getDriver(String browserType){
@@ -54,6 +64,9 @@ public class AmazonTest {
 			}else if(browserType.equalsIgnoreCase(ConstantsFile.CHROME_BROWSER)){
 				System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\Software\\chromedriver_win32\\chromedriver.exe");
 				d = new ChromeDriver();
+			}else if(browserType.equalsIgnoreCase(ConstantsFile.FIREFOX_BROWSER)){
+				System.setProperty("webdriver.gecko.driver", "D:\\Selenium\\Software\\geckodriver-v0.11.1-win32\\geckodriver.exe");
+				d = new FirefoxDriver();
 			}
 			return d;	
 		}
@@ -76,7 +89,6 @@ public class AmazonTest {
 			objSelect.selectByVisibleText("Electronics");
 			
 			test.log(LogStatus.INFO,"Electronics is selected. " );
-			
 			
 			//Requirement 2: the following steps to enter the keyword of Samsung in search box and click Search button. 
 			driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Samsung");
@@ -103,8 +115,33 @@ public class AmazonTest {
 			
 			//filter(".//*[@id='ref_1232878011']/li[1]/a/span[1]", ".//*[@id='ref_4972967011']/li[1]/a/span");
 			filter("32 Inches & Under", "2016");
+			
+//			private String fileName;
+//			List<String> displaySize = new ArrayList<String>();
+//			List<String> modelDears = new ArrayList<String>();
+			
 			test.log(LogStatus.PASS, "Testing is completed");
 		}
+		
+//		public void readTestData(String displaySize, String modelYear) throws IOException{
+//			FileInputStream fis = new FileInputStream("C:\\Users\\dawnw\\workspace\\AmazonTest\\TestData.xlsx");
+//			XSSFWorkbook wb = new XSSFWorkbook(fis);
+//			XSSFSheet sheet = wb.getSheet("fliter");
+//			int rowsCount = sheet.getLastRowNum();
+//			for(int i = 1; i <= rowsCount; i++){
+//				Row row = sheet.getRow(i);
+//				int colCounts = row.getLastCellNum();
+//				for(int j = 0; j < colCounts; j ++){
+//					Cell cell = row.getCell(j);
+//					if(cell != null){
+//						
+//						displaySize = sheet.getRow(i).getCell(j).getStringCellValue();
+//						modelYear = sheet.getRow(i).getCell(j).getStringCellValue();
+//					}
+//				}
+//			}
+//		}
+		
 			//Requirement 5: Parameterize 2 of the filtering parameters of TV displaySize and TV modelYear and display the filter.. 
 			public void filter(String displaySize, String modelYear) throws InterruptedException{
 				////div[contains(text(),'noreply@somedomain.com')]
@@ -136,9 +173,9 @@ public class AmazonTest {
 					
 					//WebElement one = driver.findElement(By.xpath(".//div[@class='a-popover-content']"));
 					
-					String result4 = driver.findElement(By.xpath(".//div[@class='a-popover-content']/div/div/div/div/span")).getText();
+					String result4 = driver.findElement(By.xpath(".//div[contains(@class, 'a-popover-content')]/div/div/div/div/span")).getText();
 					// ".//div[@class='a-popover-content']/div/div/div/div[@class='a-section']/span
-					//this is the rating: 
+					//this is the rating
 					test.log(LogStatus.INFO,"The star rating for this product is " + result4);
 				}catch(Exception e){
 					test.log(LogStatus.FAIL, "Exception handled, capturing the msg of the Star rating is failed. " + e.getMessage());

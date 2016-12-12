@@ -108,7 +108,7 @@
 	<classpathentry kind="lib" path="D:/Selenium/Software/jetty-websocket-8.1.8.jar/jetty-websocket-8.1.8.jar"/>
 	<classpathentry kind="lib" path="D:/Selenium/Software/operadriver-1.5.jar/operadriver-1.5.jar"/>
 	<classpathentry kind="lib" path="D:/Selenium/Software/protobuf-java-2.4.1.jar/protobuf-java-2.4.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.4">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
